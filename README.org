@@ -37,3 +37,10 @@ Sorry, I was not able to fix one thing: the mechanism to remember the
 Therefore you get lines like the second from the example above where
 the page number is missing. This is a commit, where the compilation
 command did not finish within the WAITFORCOMPILING time.
+
+** things that would be nice (volunteers?)
+
+- fix issue(s) from above
+- automatically generate page number histogram using R/gnuplot/...
+- cache old runs + run update iterations
+- being able to determine start-commit and end-commit (range)
