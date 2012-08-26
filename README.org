@@ -1,0 +1,39 @@
+* vklatex-page-stats-from-git.sh
+
+- author:  Karl Voit, scripts@Karl-Voit.at
+- license: GPL v3 or later
+
+If you are managing a LaTeX document within a git repository, you
+might want to see, how the page numbers evolved over time.
+
+: USAGE:   vklatex-page-stats-from-git.sh /path/to/repository
+
+This leads to the log file:
+/path/to/vklatex-page-stats-from-git.sh.log
+
+You can [[https://en.wikipedia.org/wiki/Grep][grep]] for lines starting with "RESULT:" and then you get
+something like this:
+
+: RESULT: 95c3fb0503192141xxef237a85f85bfd0c5925a7 2012-08-22T18:50:40 99
+: RESULT: 67446ccb885f857843e993xx8c54c5bdcee70fbd 2012-08-22T16:03:40
+: RESULT: d070750836eeded0b401924369c6exx7da0d7402 2012-08-21T23:14:07 93
+: RESULT: 79422bxxd8efab76a382ea11124e6bb50eeb90c5 2012-08-21T20:15:38 89
+: RESULT: 213b0631bcc7f7adf3xx24c6c97b23f3293f9027 2012-08-20T19:25:57 85
+: RESULT: b0fdbbdd870d893ec367d3935xx436c148972a9f 2012-08-20T15:38:25 83
+: RESULT: 330c8ee87784b3afc739d3cxxba0e0ccc5ca44c7 2012-08-20T11:16:39 83
+
+** customization
+
+Look into the script file to modify following things:
+
+- LOGFILE: file where the logs should be written to (better do outside of TEXDIR)
+- WAITFORCOMPILING: time to wait for compilation process to end
+
+** known bugs/issues
+
+Sorry, I was not able to fix one thing: the mechanism to remember the
+[[https://en.wikipedia.org/wiki/Process_identifier][PID]] of the sub-process which is compiling the LaTeX document.
+
+Therefore you get lines like the second from the example above where
+the page number is missing. This is a commit, where the compilation
+command did not finish within the WAITFORCOMPILING time.
