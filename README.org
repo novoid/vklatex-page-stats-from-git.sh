@@ -30,6 +30,9 @@ Look into the script file to modify following things:
 - WAITFORCOMPILING: time to wait for compilation process to end
 
 ** known bugs/issues
+:PROPERTIES:
+:CREATED:  [2012-08-26 Sun 19:22]
+:END:
 
 Sorry, I was not able to fix one thing: the mechanism to remember the
 [[https://en.wikipedia.org/wiki/Process_identifier][PID]] of the sub-process which is compiling the LaTeX document.
@@ -37,6 +40,10 @@ Sorry, I was not able to fix one thing: the mechanism to remember the
 Therefore you get lines like the second from the example above where
 the page number is missing. This is a commit, where the compilation
 command did not finish within the WAITFORCOMPILING time.
+
+[2012-08-26 Sun]: @mr_ud wrote me that "man timeout" exists. Code
+should be changed to use timeout instead of own implementation. If
+return code is 124, the command was killed.
 
 ** things that would be nice (volunteers?)
 
